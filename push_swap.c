@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:44:04 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/25 11:36:25 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/03/25 13:53:27 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,29 @@ int get_cost(t_stack_node **stack, int hold_1, int hold_2)
     }
     return (i - j);
 }
-void    sort_b_stack(t_stack_node **b, t_stack_node *node, int i)
+
+int calculate_position(t_stack_node **stack, t_stack_node *node_to_find)
+{
+    int i;
+    t_stack_node *temp;
+
+    i = 1;
+    temp = *stack;
+    while (temp)
+    {
+        if (temp == node_to_find)
+            return (i);
+        i++;
+        temp = temp->next;
+    }
+    return (i);
+}
+void    sort_b_stack(t_stack_node **b, t_stack_node *node)
 {
     t_stack_node    *temp;
     
     temp = *b;
-    while (temp->next && ++i)
+    while (temp->next)
     {
         if (node->value > find_max(*b)->value 
         || node->value < find_min(*b, 0)->value)
@@ -71,7 +88,7 @@ void    sort_b_stack(t_stack_node **b, t_stack_node *node, int i)
         if (node->value > temp->value && node->value < temp->prev->value)
             break ;
     }
-    if (i > (stack_len(*b) / 2))
+    if (calculate_position(b, temp) > (stack_len(*b) / 2)) //calculate distance of temp from top
     {
         while (*b != temp)
             rrb(b, 0); //add option to rotate stack a too
@@ -91,7 +108,7 @@ void    push_closest_to_top(t_stack_node **a, t_stack_node **b, int nodes_on_hol
         while ((*a)->value != nodes_on_hold[0])
             ra(a, 0);
         if (stack_len(*b) > 1)
-            sort_b_stack(b, *a, i);
+            sort_b_stack(b, *a);
         pb(b, a, 0);
     }
     else 
@@ -99,7 +116,7 @@ void    push_closest_to_top(t_stack_node **a, t_stack_node **b, int nodes_on_hol
         while ((*a)->value != nodes_on_hold[1])
             rra(a,0);
         if (stack_len(*b) > 1)
-            sort_b_stack(b, *a, i);
+            sort_b_stack(b, *a);
         pb(b, a, 0);
     }
 }
@@ -147,13 +164,13 @@ void    push_swap(t_stack_node **a, t_stack_node **b)
         index_nodes(a, segment_size);
         while (i++ < segment_size)
         {
-            printf("-------------\n");
             printf("A ");
             print_stack(a);
             printf("B ");
             print_stack(b);
             printf("commands:\n");
             find_nodes_to_hold(a, segment_size, hold_node);
+            printf("nodes to hold: %d & %d\n", hold_node[0], hold_node[1]);
             push_closest_to_top(a, b, hold_node);
             printf("-------------\n");
         } // check here if rotating b at the same time makes sense save the rrb or rb "debt"
