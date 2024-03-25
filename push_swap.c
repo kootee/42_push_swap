@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:44:04 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/25 13:53:27 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/03/25 14:48:38 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,15 +164,15 @@ void    push_swap(t_stack_node **a, t_stack_node **b)
         index_nodes(a, segment_size);
         while (i++ < segment_size)
         {
-            printf("A ");
-            print_stack(a);
-            printf("B ");
-            print_stack(b);
-            printf("commands:\n");
+            // printf("A ");
+            // print_stack(a);
+            // printf("B ");
+            // print_stack(b);
+            // printf("commands:\n");
             find_nodes_to_hold(a, segment_size, hold_node);
-            printf("nodes to hold: %d & %d\n", hold_node[0], hold_node[1]);
+            // printf("nodes to hold: %d & %d\n", hold_node[0], hold_node[1]);
             push_closest_to_top(a, b, hold_node);
-            printf("-------------\n");
+            // printf("-------------\n");
         } // check here if rotating b at the same time makes sense save the rrb or rb "debt"
     }
     if (get_cost(b, find_max(*b)->value, find_max(*b)->value) <= 0)

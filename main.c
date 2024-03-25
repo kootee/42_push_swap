@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 19:10:01 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/25 11:03:39 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/03/25 14:49:23 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int main(int argc, char **argv)
     if (argc < 2 || !argv)
         exit(1);
     init_stack(&stack_a, &stack_b, argv, argc);
-    printf("stack len is %d \n", stack_len(stack_a));
+    // printf("stack len is %d \n", stack_len(stack_a));
     if (!is_sorted(stack_a))
     {
         if (stack_len(stack_a) == 2)
@@ -62,8 +62,8 @@ int main(int argc, char **argv)
                 pa(&stack_a, &stack_b, 0);
         }
     }
-    printf("Sorted stack:\n");
-    print_stack(&stack_a);
+    // printf("Sorted stack:\n");
+    // print_stack(&stack_a);
     free_stack(&stack_a);
 }
 
