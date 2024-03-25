@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 19:04:59 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/22 10:35:20 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/03/25 11:00:20 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <limits.h>
 # include <stdbool.h>
 # include <stdio.h>
-# include "libft/libft.h"
+# include "libft/includes/libft.h"
 
 typedef struct s_stack_node
 {

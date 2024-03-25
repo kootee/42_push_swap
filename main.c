@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 19:10:01 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/22 11:39:50 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/03/25 11:03:39 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ int main(int argc, char **argv)
                 pa(&stack_a, &stack_b, 0);
         }
     }
+    printf("Sorted stack:\n");
+    print_stack(&stack_a);
     free_stack(&stack_a);
 }
 

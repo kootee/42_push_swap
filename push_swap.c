@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:44:04 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/22 21:40:22 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/03/25 11:36:25 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,15 @@ int get_cost(t_stack_node **stack, int hold_1, int hold_2)
     }
     return (i - j);
 }
-void    sort_b_stack(t_stack_node **b, t_stack_node *node)
+void    sort_b_stack(t_stack_node **b, t_stack_node *node, int i)
 {
-    int             i;
     t_stack_node    *temp;
     
-    i = 0;
     temp = *b;
     while (temp->next && ++i)
     {
-        if (node->value > find_max(*b)->value)
+        if (node->value > find_max(*b)->value 
+        || node->value < find_min(*b, 0)->value)
         {
             temp = find_max(*b); //get biggest on top if node to push is biggest
             break ;
@@ -72,7 +71,7 @@ void    sort_b_stack(t_stack_node **b, t_stack_node *node)
         if (node->value > temp->value && node->value < temp->prev->value)
             break ;
     }
-    if (i > (stack_len(*b) / 2)) //could be optimised?
+    if (i > (stack_len(*b) / 2))
     {
         while (*b != temp)
             rrb(b, 0); //add option to rotate stack a too
@@ -82,6 +81,9 @@ void    sort_b_stack(t_stack_node **b, t_stack_node *node)
 }
 void    push_closest_to_top(t_stack_node **a, t_stack_node **b, int nodes_on_hold[2])
 {
+    int i;
+
+    i = 0;
     if (!*a)
         return ;
     if (get_cost(a, nodes_on_hold[0], nodes_on_hold[1]) <= 0) //calculate cost returns i - j, hold 1 cost - hold 2 cost
@@ -89,7 +91,7 @@ void    push_closest_to_top(t_stack_node **a, t_stack_node **b, int nodes_on_hol
         while ((*a)->value != nodes_on_hold[0])
             ra(a, 0);
         if (stack_len(*b) > 1)
-            sort_b_stack(b, *a);
+            sort_b_stack(b, *a, i);
         pb(b, a, 0);
     }
     else 
@@ -97,7 +99,7 @@ void    push_closest_to_top(t_stack_node **a, t_stack_node **b, int nodes_on_hol
         while ((*a)->value != nodes_on_hold[1])
             rra(a,0);
         if (stack_len(*b) > 1)
-            sort_b_stack(b, *a);
+            sort_b_stack(b, *a, i);
         pb(b, a, 0);
     }
 }

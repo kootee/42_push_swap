@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:50:50 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/22 21:20:52 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/03/25 11:11:34 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int calculate_segment_size(t_stack_node **a)
     int number_of_segments;
 
     stack_size = stack_len(*a);
-    number_of_segments = 4 + (((stack_size - 100) * 3) / 200);
+    number_of_segments = 5 + (((stack_size - 100) * 3) / 200);
     return (number_of_segments);
 }
 
