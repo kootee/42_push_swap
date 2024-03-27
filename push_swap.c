@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:44:04 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/27 14:13:31 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/03/27 15:40:54 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,18 +70,19 @@ int calculate_position(t_stack_node **stack, t_stack_node *node_to_find)
     return (i);
 }
 
-int    sort_b_stack(t_stack_node **b, int val_to_push, char *cmd)
+int    sort_b_stack(t_stack_node **b, int val_to_push, int cmd)
 {
     t_stack_node    *temp;
     int             rot;
     
     temp = *b;
+    rot = 0;
     while (temp->next)
     {
         if (val_to_push > find_max(*b)->value 
         || val_to_push < find_min(*b, 0)->value)
         {
-            temp = find_max(*b); //get biggest on top if node to push is biggest
+            temp = find_max(*b);
             break ;
         }
         if (val_to_push > temp->value && val_to_push < (find_last(*b))->value)
@@ -90,21 +91,24 @@ int    sort_b_stack(t_stack_node **b, int val_to_push, char *cmd)
         if (val_to_push > temp->value && val_to_push < temp->prev->value)
             break ;
     }
-    if (calculate_position(b, temp) < (stack_len(*b) / 2)) //calculate distance of temp from top
+    if (calculate_position(b, temp) > (stack_len(*b) / 2))
     {
-        if (cmd == "rr")
+        if (cmd)
             rot = count_cmds(b, val_to_push, cmd);
         else
         {
-            while (*b != temp)
-               rrb(b, 0); 
+            while (*b!= temp)
+                rb(b, 0);
         }
         return (rot);
     }
-    if (cmd == "r")
+    if (!cmd)
         rot = count_cmds(b, val_to_push, cmd);
-    while (*b!= temp)
-        rb(b, 0); //add option to rotate stack a too
+    else
+    {
+        while (*b != temp)
+            rrb(b, 0); 
+    }
     return (rot);
 }
 
@@ -123,21 +127,13 @@ void    push_closest_to_top(t_stack_node **a, t_stack_node **b, int nodes_on_hol
             i++;
         }
         check_dbl_rot(a, b, i, nodes_on_hold[0]);
-        //
-        if (stack_len(*b) > 1)
-            sort_b_stack(b, *a);
-        //
         pb(b, a, 0);
     }
     else 
     {
         while ((*a)->value != nodes_on_hold[1])
             i++;
-        check_dbl_rot(a, b, i * -1, nodes_on_hold[0]);  
-        //
-        if (stack_len(*b) > 1)
-            sort_b_stack(b, *a);
-        //
+        check_dbl_rot(a, b, i * -1, nodes_on_hold[0]);
         pb(b, a, 0);
     }
 }

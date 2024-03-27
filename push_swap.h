@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 19:04:59 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/25 11:00:20 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/03/27 15:42:24 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,21 @@ void    free_stack(t_stack_node **stack);
 void    handle_error(t_stack_node **a,char **argv, int argc);
 
 /* Push_swap sort algorithms */
+int     sort_b_stack(t_stack_node **b, int val_to_push, int cmd);
 void    sort_ministack_3(t_stack_node **stack);
 void    sort_ministack_4(t_stack_node **a, t_stack_node **b);
 void    sort_ministack_5(t_stack_node **a, t_stack_node **b);
 void    push_swap(t_stack_node **a, t_stack_node **b);
+void	check_dbl_rot(t_stack_node **a, t_stack_node **b, int rot_a, int val);
+
 
 /* Push_swap utilities */
-bool            is_sorted(t_stack_node *stack);
-int             stack_len(t_stack_node *stack);
+t_stack_node    *find_min(t_stack_node *stack, bool for_index);
 t_stack_node    *find_last(t_stack_node *node);
 t_stack_node    *find_max(t_stack_node *stack);
-t_stack_node    *find_min(t_stack_node *stack, bool for_index);
+bool            is_sorted(t_stack_node *stack);
+int             stack_len(t_stack_node *stack);
+int	            count_cmds(t_stack_node **b, int val_to_push, int cmd);
 void            do_twice(void (*f)(t_stack_node **a, int i), t_stack_node **s, int x);
 
 
