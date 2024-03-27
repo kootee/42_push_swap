@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 19:04:59 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/27 15:42:24 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/03/27 16:37:50 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void    sort_ministack_5(t_stack_node **a, t_stack_node **b);
 void    push_swap(t_stack_node **a, t_stack_node **b);
 void	check_dbl_rot(t_stack_node **a, t_stack_node **b, int rot_a, int val);
 
-
 /* Push_swap utilities */
 t_stack_node    *find_min(t_stack_node *stack, bool for_index);
 t_stack_node    *find_last(t_stack_node *node);
@@ -57,7 +56,6 @@ bool            is_sorted(t_stack_node *stack);
 int             stack_len(t_stack_node *stack);
 int	            count_cmds(t_stack_node **b, int val_to_push, int cmd);
 void            do_twice(void (*f)(t_stack_node **a, int i), t_stack_node **s, int x);
-
 
 /* stack commands */
 void    sa(t_stack_node **a, int i);
@@ -72,8 +70,7 @@ void    ss(t_stack_node **a, t_stack_node **b, int i);
 void    rr(t_stack_node **a, t_stack_node **b, int i);
 void    rrr(t_stack_node **a, t_stack_node **b, int i);
 
-
-void    print_stack(t_stack_node **stack); // REMOVE before evaluation!!! just for testing
-
+/* REMOVE before evaluation!!! just for testing */
+void    print_stack(t_stack_node **stack);
 
 #endif

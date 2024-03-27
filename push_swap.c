@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:44:04 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/27 15:40:54 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/03/27 17:44:15 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void index_nodes(t_stack_node **stack, int segment_size)
     }   
 }
 
-int get_cost(t_stack_node **stack, int hold_1, int hold_2)
+int compare_cost(t_stack_node **stack, int hold_1, int hold_2)
 {
     int i;
     int j;
@@ -76,7 +76,8 @@ int    sort_b_stack(t_stack_node **b, int val_to_push, int cmd)
     int             rot;
     
     temp = *b;
-    rot = 0;
+    if (stack_len(*b) < 2)
+        return (0);
     while (temp->next)
     {
         if (val_to_push > find_max(*b)->value 
@@ -91,10 +92,11 @@ int    sort_b_stack(t_stack_node **b, int val_to_push, int cmd)
         if (val_to_push > temp->value && val_to_push < temp->prev->value)
             break ;
     }
-    if (calculate_position(b, temp) > (stack_len(*b) / 2))
+    rot = 0;
+    if (calculate_position(b, temp) > (stack_len(*b) / 2)) // checks if I want to 
     {
         if (cmd)
-            rot = count_cmds(b, val_to_push, cmd);
+            rot = count_cmds(b, temp->value, cmd);
         else
         {
             while (*b!= temp)
@@ -103,7 +105,7 @@ int    sort_b_stack(t_stack_node **b, int val_to_push, int cmd)
         return (rot);
     }
     if (!cmd)
-        rot = count_cmds(b, val_to_push, cmd);
+        rot = count_cmds(b, temp->value, cmd);
     else
     {
         while (*b != temp)
@@ -115,26 +117,24 @@ int    sort_b_stack(t_stack_node **b, int val_to_push, int cmd)
 void    push_closest_to_top(t_stack_node **a, t_stack_node **b, int nodes_on_hold[2])
 {
     int i;
+    t_stack_node *temp;
 
     i = 0;
+    temp = *a;
     if (!*a)
         return ;
-    if (get_cost(a, nodes_on_hold[0], nodes_on_hold[1]) <= 0) //calculate cost returns i - j, hold 1 cost - hold 2 cost
+    if (compare_cost(a, nodes_on_hold[0], nodes_on_hold[1]) <= 0)
     {
-        while ((*a)->value != nodes_on_hold[0])
-        {
-            *a = (*a)->next;
-            i++;
-        }
+        while (temp->value != nodes_on_hold[0] && i++)
+            temp = temp->next;
         check_dbl_rot(a, b, i, nodes_on_hold[0]);
-        pb(b, a, 0);
     }
     else 
     {
-        while ((*a)->value != nodes_on_hold[1])
-            i++;
-        check_dbl_rot(a, b, i * -1, nodes_on_hold[0]);
-        pb(b, a, 0);
+        temp = find_last(*a);
+        while (++i && temp->value != nodes_on_hold[1])
+            temp = temp->prev;
+        check_dbl_rot(a, b, i * -1, nodes_on_hold[1]);
     }
 }
 
@@ -192,7 +192,7 @@ void    push_swap(t_stack_node **a, t_stack_node **b)
             // printf("-------------\n");
         } // check here if rotating b at the same time makes sense save the rrb or rb "debt"
     }
-    if (get_cost(b, find_max(*b)->value, find_max(*b)->value) <= 0)
+    if (compare_cost(b, find_max(*b)->value, find_max(*b)->value) <= 0)
     {
         while (find_max(*b) != *b)
             rb(b, 0);
