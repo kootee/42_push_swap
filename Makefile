@@ -15,7 +15,8 @@ SRCS = main.c \
 		rotate.c \
 		reverse_rotate.c \
 		swap.c \
-		sort_ministack.c
+		sort_ministack.c \
+		check_dbl_rot.c
 
 LIBFT = libft/libft.a
 
