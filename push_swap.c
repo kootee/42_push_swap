@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:44:04 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/28 16:05:32 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/03/28 16:22:31 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,7 @@ int    sort_b_stack(t_stk_node **b, int to_top, int a_cmd)
             if (to_top > temp->value && to_top < temp->prev->value)
                 break ;
         }
-    }
-    
-    // TESTING
-    if (a_cmd == 1)
-        printf("is R\n");
-    else if (a_cmd == 0)
-        printf("is RR\n");    
-    printf("stack len / 2 is %d\n", (stack_len(*b) / 2));
-    // TESTING
-    
+    }    
     rot_b = 0;
     b_cmd = calculate_cmd(b, temp);
     if (b_cmd == EOR)
@@ -179,16 +170,15 @@ void    push_swap(t_stk_node **a, t_stk_node **b)
         index_nodes(a, segment_size);
         while (i++ < segment_size)
         {
-            printf("A ");
-            print_stack(a);
-            printf("B ");
-            print_stack(b);
+            // printf("A ");
+            // print_stack(a);
+            // printf("B ");
+            // print_stack(b);
             find_nodes_to_hold(a, segment_size, hold_node);
-            printf("nodes to hold: %d & %d\n", hold_node[0], hold_node[1]);
-            printf("commands:\n");
+            // printf("nodes to hold: %d & %d\n", hold_node[0], hold_node[1]);
+            // printf("commands:\n");
             push_closest_to_top(a, b, hold_node);
-            // printf("-------------\n");
-        } // check here if rotating b at the same time makes sense save the rrb or rb "debt"
+        } 
     }
     if (compare_cost(b, find_max(*b)->value, find_max(*b)->value) <= 0)
     {
