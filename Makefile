@@ -16,7 +16,8 @@ SRCS = main.c \
 		reverse_rotate.c \
 		swap.c \
 		sort_ministack.c \
-		check_dbl_rot.c
+		check_dbl_rot.c \
+		calculate_stack_position.c
 
 LIBFT = libft/libft.a
 

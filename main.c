@@ -6,15 +6,15 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 19:10:01 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/25 14:49:23 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/03/28 09:59:22 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    print_stack(t_stack_node **stack)
+void    print_stack(t_stk_node **stack)
 {
-    t_stack_node *temp;
+    t_stk_node *temp;
     
     printf("stack:\n");
     temp = *stack;
@@ -38,8 +38,8 @@ void    print_strings(char **argv)
 
 int main(int argc, char **argv)
 {
-    t_stack_node    *stack_a;
-    t_stack_node    *stack_b;
+    t_stk_node    *stack_a;
+    t_stk_node    *stack_b;
 
     if (argc < 2 || !argv)
         exit(1);

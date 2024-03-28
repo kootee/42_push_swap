@@ -6,22 +6,22 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 13:47:56 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/22 10:35:20 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/03/28 09:59:22 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    do_twice(void (*f)(t_stack_node **a, int i), t_stack_node **s, int x)
+void    do_twice(void (*f)(t_stk_node **a, int i), t_stk_node **s, int x)
 {
     f(s, x);
     f(s, x);
 }
 
-t_stack_node *find_max(t_stack_node *stack)
+t_stk_node *find_max(t_stk_node *stack)
 {
     int             max_val;
-    t_stack_node    *max_node;
+    t_stk_node    *max_node;
 
     if (stack == NULL)
         return (NULL);
@@ -38,10 +38,10 @@ t_stack_node *find_max(t_stack_node *stack)
     return (max_node);
 }
 
-t_stack_node    *find_min(t_stack_node *stack, bool for_index)
+t_stk_node    *find_min(t_stk_node *stack, bool for_index)
 {
     int             min_val;
-    t_stack_node    *min_node;
+    t_stk_node    *min_node;
 
     if (stack == NULL)
         return (NULL);
@@ -63,7 +63,7 @@ t_stack_node    *find_min(t_stack_node *stack, bool for_index)
     return (min_node);
 }
 
-t_stack_node *find_last(t_stack_node *node)
+t_stk_node *find_last(t_stk_node *node)
 {
     if (node == NULL)
         return (NULL);
@@ -72,7 +72,7 @@ t_stack_node *find_last(t_stack_node *node)
     return (node);
 }
 
-int stack_len(t_stack_node *stack)
+int stack_len(t_stk_node *stack)
 {
     int i;
 

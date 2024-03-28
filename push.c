@@ -6,15 +6,15 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 12:14:48 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/15 10:40:45 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/03/28 09:59:22 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void push(t_stack_node **from_stack, t_stack_node **to_stack)
+static void push(t_stk_node **from_stack, t_stk_node **to_stack)
 {
-    t_stack_node *node_to_push;
+    t_stk_node *node_to_push;
     
     if (*from_stack == NULL)
         return ;
@@ -35,14 +35,14 @@ static void push(t_stack_node **from_stack, t_stack_node **to_stack)
         *to_stack = node_to_push;
     }
 }
-void    pa(t_stack_node **a, t_stack_node **b, int i)
+void    pa(t_stk_node **a, t_stk_node **b, int i)
 {
     push(b, a);
     if (!i)
         write(1, "pa\n", 3);
 }
 
-void    pb(t_stack_node **b, t_stack_node **a, int i)
+void    pb(t_stk_node **b, t_stk_node **a, int i)
 {
     push(a, b);
     if (!i)

@@ -6,15 +6,15 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 12:45:41 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/22 10:35:20 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/03/28 09:59:22 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void    rev_rotate(t_stack_node **stack)
+static void    rev_rotate(t_stk_node **stack)
 {
-    t_stack_node    *last_node;
+    t_stk_node    *last_node;
     int             len;
     
     len = stack_len(*stack);
@@ -28,21 +28,21 @@ static void    rev_rotate(t_stack_node **stack)
     last_node->next->prev = last_node;
     }
 
-void    rra(t_stack_node **a, int i)
+void    rra(t_stk_node **a, int i)
 {
     rev_rotate(a);
     if (!i)
         write(1, "rra\n", 4);
 }
 
-void    rrb(t_stack_node **b, int i)
+void    rrb(t_stk_node **b, int i)
 {
     rev_rotate(b);
     if (!i)
         write(1, "rrb\n", 4);
 }
 
-void    rrr(t_stack_node **a, t_stack_node **b, int i)
+void    rrr(t_stk_node **a, t_stk_node **b, int i)
 {
     rev_rotate(a);
     rev_rotate(b);
