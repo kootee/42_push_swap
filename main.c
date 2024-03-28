@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 19:10:01 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/28 13:47:13 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/03/28 16:06:37 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int main(int argc, char **argv)
         else
             push_swap(&a, &b);
     }
+    print_stack(&a);
     free_stack(&a);
 }
 
