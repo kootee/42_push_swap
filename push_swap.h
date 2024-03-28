@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 19:04:59 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/28 11:23:31 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/03/28 14:45:01 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_stack_node
 int main(int argc, char **argv);
 
 /* Initialise functions */
-void    init_stack(t_stk_node **a, t_stk_node **b, char **argv, int argc);
+void    init_stack(t_stk_node **a, char **argv, int argc);
 void    append_node(t_stk_node **a, int n);
 int     calculate_segment_size(t_stk_node **a);
 
@@ -62,7 +62,7 @@ int	            count_cmds(t_stk_node **b, int val_to_push, int cmd);
 void            do_twice(void (*f)(t_stk_node **a, int i), t_stk_node **s, int x);
 
 /* Calculate chepest commands */
-int calculate_cmd(t_stk_node **stack, int index);
+int calculate_cmd(t_stk_node **stack, t_stk_node *node_to_find);
 
 /* stack commands */
 void    sa(t_stk_node **a, int i);

@@ -6,20 +6,20 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:49:00 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/28 11:39:26 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/03/28 14:44:26 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	calculate_position(t_stk_node *node, int pos)
+int	calculate_node_index(t_stk_node *stack, t_stk_node *node_to_find)
 {
-	int	i;
 	t_stk_node *temp;
+	int	i;
 
 	i = 1;
-	temp = node;
-	while (temp && i != pos)
+	temp = stack;
+	while (temp != node_to_find)
 	{
 		temp = temp->next;
 		i++;
@@ -27,12 +27,14 @@ int	calculate_position(t_stk_node *node, int pos)
 	return (i);
 }
 
-int calculate_cmd(t_stk_node **stack, int node_index)
+int calculate_cmd(t_stk_node **stack, t_stk_node *node_to_find)
 {
-	int	s_len;
     t_stk_node *temp;
+	int	s_len;
+	int	node_index;
 	
     temp = *stack;
+	node_index = calculate_node_index(*stack, node_to_find);
 	s_len = stack_len(*stack);
 	if (s_len % 2 == 0) // if stack len is even
 	{
@@ -43,9 +45,9 @@ int calculate_cmd(t_stk_node **stack, int node_index)
 	}
 	else
 	{
-		if (node_index == calculate_position(*stack, (s_len / 2 + 1)))
+		if (node_index == (s_len / 2 + 1))
 			return (EOR);
-		if (node_index < calculate_position(*stack, (s_len / 2 + 1)))
+		if (node_index < (s_len / 2 + 1))
 			return (R);
 		else
 			return (RR);

@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 13:24:16 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/28 10:00:25 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/03/28 14:31:42 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int	count_cmds(t_stk_node **b, int val_to_find, int cmd)
 {
-	t_stk_node	*temp;
+	t_stk_node		*temp;
 	int				rot_count;
 	
 	rot_count = 0;
-	if (!cmd)
+	if (cmd == R)
 	{
 		temp = *b;
 		while (temp->value != val_to_find)
@@ -27,8 +27,9 @@ int	count_cmds(t_stk_node **b, int val_to_find, int cmd)
 			rot_count++;
 		}
 	}
-	else
+	else if (cmd == RR)
 	{
+		rot_count++;
 		temp = find_last(*b);
 		while (temp->value != val_to_find)
 		{

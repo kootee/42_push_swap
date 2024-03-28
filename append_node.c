@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 12:59:44 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/28 09:59:22 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/03/28 13:37:24 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@ static t_stk_node    *new_stack_node(int n)
     
     new_node = malloc(sizeof(t_stk_node));
     if (!new_node)
-        return (NULL); // what to do down the line
+        return (NULL); // what to do down the line if mallo fails
     new_node->value = n;
+    new_node->index = -1;
     new_node->next = NULL;
     return (new_node);
 }
@@ -46,6 +47,5 @@ void    append_node(t_stk_node **a, int n)
     t_stk_node    *new_node;
 
     new_node = new_stack_node(n);
-    new_node->index = -1;
     add_to_stack(a, new_node);
 }

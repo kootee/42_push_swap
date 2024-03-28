@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:50:50 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/28 09:59:22 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/03/28 13:50:58 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,16 +75,16 @@ static int input_error(char *str)
     return (0);
 }
 
-void    init_stack(t_stk_node **a, t_stk_node **b, char **argv, int argc)
+void    init_stack(t_stk_node **a, char **argv, int argc)
 {
     long    n;
     int     i;
     
     i = 0;
-    *a = NULL;
-    *b = NULL;
     if (argc == 2)
         argv = ft_split(argv[1], ' ');
+    if (argv == NULL || *argv == NULL)
+        exit(1);
     if (argc > 2)
         i++;
     while(argv[i])

@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 19:10:01 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/28 09:59:22 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/03/28 13:47:13 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,32 +38,27 @@ void    print_strings(char **argv)
 
 int main(int argc, char **argv)
 {
-    t_stk_node    *stack_a;
-    t_stk_node    *stack_b;
+    t_stk_node    *a;
+    t_stk_node    *b;
 
+    a = NULL;
+    b = NULL;
     if (argc < 2 || !argv)
         exit(1);
-    init_stack(&stack_a, &stack_b, argv, argc);
-    // printf("stack len is %d \n", stack_len(stack_a));
-    if (!is_sorted(stack_a))
+    init_stack(&a, argv, argc);
+    if (!is_sorted(a))
     {
-        if (stack_len(stack_a) == 2)
-            sa(&stack_a, 0);
-        else if (stack_len(stack_a) == 3)
-            sort_ministack_3(&stack_a);
-        else if (stack_len(stack_a) == 4)
-            sort_ministack_4(&stack_a, &stack_b);
-        else if (stack_len(stack_a) == 5)
-            sort_ministack_5(&stack_a, &stack_b);
+        if (stack_len(a) == 2)
+            sa(&a, 0);
+        else if (stack_len(a) == 3)
+            sort_ministack_3(&a);
+        else if (stack_len(a) == 4)
+            sort_ministack_4(&a, &b);
+        else if (stack_len(a) == 5)
+            sort_ministack_5(&a, &b);
         else
-        {
-            push_swap(&stack_a, &stack_b);
-            while (stack_b)
-                pa(&stack_a, &stack_b, 0);
-        }
+            push_swap(&a, &b);
     }
-    // printf("Sorted stack:\n");
-    // print_stack(&stack_a);
-    free_stack(&stack_a);
+    free_stack(&a);
 }
 

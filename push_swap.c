@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:44:04 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/28 11:39:17 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/03/28 14:40:21 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,8 @@ int    sort_b_stack(t_stk_node **b, int to_top, int a_cmd)
     t_stk_node  *temp;
     int         rot_b;
     int         b_cmd;
-    int         temp_index;
     
     temp = *b;
-    temp_index = 0;
     if (stack_len(*b) < 2)
         return (0);
     if (to_top > find_max(*b)->value || to_top < find_min(*b, 0)->value)
@@ -73,7 +71,6 @@ int    sort_b_stack(t_stk_node **b, int to_top, int a_cmd)
             if (to_top > temp->value && to_top < (find_last(*b))->value)
                 break ;
             temp = temp->next;
-            temp_index++;
             if (to_top > temp->value && to_top < temp->prev->value)
                 break ;
         }
@@ -84,18 +81,17 @@ int    sort_b_stack(t_stk_node **b, int to_top, int a_cmd)
         printf("is R\n");
     else if (a_cmd == 0)
         printf("is RR\n");    
-    printf("position is %d \n", calculate_cmd(b, temp_index));
     printf("stack len / 2 is %d\n", (stack_len(*b) / 2));
     // TESTING
     
     rot_b = 0;
-    b_cmd = calculate_cmd(b, temp_index + 1);
+    b_cmd = calculate_cmd(b, temp);
     if (b_cmd == EOR)
-        rot_b = count_cmds(b, temp->value, b_cmd);
+        rot_b = count_cmds(b, temp->value, a_cmd);
     else if (b_cmd == R) // checks if I want to 
     {
         if (a_cmd == R)
-            rot_b = count_cmds(b, temp->value, b_cmd);
+            rot_b = count_cmds(b, temp->value, R);
         else
         {
             while (*b!= temp)
@@ -103,10 +99,10 @@ int    sort_b_stack(t_stk_node **b, int to_top, int a_cmd)
         }
         return (rot_b);
     }
-    else
+    else if (b_cmd == RR)
     {
         if (a_cmd == RR)
-            rot_b = count_cmds(b, temp->value, b_cmd);
+            rot_b = count_cmds(b, temp->value, RR);
         else
         {
             while (*b != temp)
@@ -201,4 +197,6 @@ void    push_swap(t_stk_node **a, t_stk_node **b)
     }
     while (find_max(*b) != *b)
             rrb(b, 0);
+    while (b)
+        pa(a, b, 0);
 }
