@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:44:04 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/28 14:40:21 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/03/28 15:59:25 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ void    push_closest_to_top(t_stk_node **a, t_stk_node **b, int nodes_on_hold[2]
         return ;
     if (compare_cost(a, nodes_on_hold[0], nodes_on_hold[1]) <= 0)
     {
-        while (temp->value != nodes_on_hold[0] && rot++)
+        while (temp->value != nodes_on_hold[0] && ++rot)
             temp = temp->next;
         check_dbl_rot(a, b, rot, nodes_on_hold[0]);
     }
@@ -197,6 +197,6 @@ void    push_swap(t_stk_node **a, t_stk_node **b)
     }
     while (find_max(*b) != *b)
             rrb(b, 0);
-    while (b)
+    while (*b)
         pa(a, b, 0);
 }
