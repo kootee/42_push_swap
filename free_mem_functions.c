@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:37:10 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/15 12:12:27 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/03/28 09:59:22 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /* MAKE PRINTF YOUR OWN PRINTF */
 
-void    handle_error(t_stack_node **stack,char **argv, int i)
+void    handle_error(t_stk_node **stack,char **argv, int i)
 {
     free_stack(stack);
     // free_list(argv);
@@ -44,10 +44,10 @@ void    free_list(char **ptr)
     free(ptr);
 }
 
-void    free_stack(t_stack_node **stack)
+void    free_stack(t_stk_node **stack)
 {
-    t_stack_node    *temp;
-    t_stack_node    *current;
+    t_stk_node    *temp;
+    t_stk_node    *current;
 
     if (stack == NULL)
         return ;

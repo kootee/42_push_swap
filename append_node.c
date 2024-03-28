@@ -6,27 +6,28 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 12:59:44 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/22 10:35:20 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/03/28 13:37:24 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static t_stack_node    *new_stack_node(int n)
+static t_stk_node    *new_stack_node(int n)
 {
-    t_stack_node    *new_node;
+    t_stk_node    *new_node;
     
-    new_node = malloc(sizeof(t_stack_node));
+    new_node = malloc(sizeof(t_stk_node));
     if (!new_node)
-        return (NULL); // what to do down the line
+        return (NULL); // what to do down the line if mallo fails
     new_node->value = n;
+    new_node->index = -1;
     new_node->next = NULL;
     return (new_node);
 }
 
-static void add_to_stack(t_stack_node **stack, t_stack_node *new_node)
+static void add_to_stack(t_stk_node **stack, t_stk_node *new_node)
 {
-    t_stack_node    *top_of_stack;
+    t_stk_node    *top_of_stack;
     
     if (!stack || !new_node)
         return ;
@@ -41,11 +42,10 @@ static void add_to_stack(t_stack_node **stack, t_stack_node *new_node)
     new_node->prev = top_of_stack;
 }
 
-void    append_node(t_stack_node **a, int n)
+void    append_node(t_stk_node **a, int n)
 {
-    t_stack_node    *new_node;
+    t_stk_node    *new_node;
 
     new_node = new_stack_node(n);
-    new_node->index = -1;
     add_to_stack(a, new_node);
 }

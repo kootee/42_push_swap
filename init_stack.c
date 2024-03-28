@@ -6,13 +6,13 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:50:50 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/25 11:11:34 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/03/28 13:50:58 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int calculate_segment_size(t_stack_node **a)
+int calculate_segment_size(t_stk_node **a)
 {
     int stack_size;
     int number_of_segments;
@@ -45,7 +45,7 @@ static long ft_atol(const char *str)
 	return (nbr * sign);
 }
 
-static int  duplicate_error(t_stack_node *a, int n)
+static int  duplicate_error(t_stk_node *a, int n)
 {
     if (a == NULL)
         return (0);
@@ -75,16 +75,16 @@ static int input_error(char *str)
     return (0);
 }
 
-void    init_stack(t_stack_node **a, t_stack_node **b, char **argv, int argc)
+void    init_stack(t_stk_node **a, char **argv, int argc)
 {
     long    n;
     int     i;
     
     i = 0;
-    *a = NULL;
-    *b = NULL;
     if (argc == 2)
         argv = ft_split(argv[1], ' ');
+    if (argv == NULL || *argv == NULL)
+        exit(1);
     if (argc > 2)
         i++;
     while(argv[i])

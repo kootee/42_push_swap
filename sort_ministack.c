@@ -6,13 +6,13 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:32:35 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/22 10:43:56 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/03/28 09:59:22 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    sort_ministack_3(t_stack_node **stack)
+void    sort_ministack_3(t_stk_node **stack)
 {    
     if ((*stack)->value > (*stack)->next->value
         && (*stack)->next->next->value > (*stack)->value)
@@ -36,9 +36,9 @@ void    sort_ministack_3(t_stack_node **stack)
         ra(stack, 0);
     }
 }
-void    sort_ministack_4(t_stack_node **a, t_stack_node **b)
+void    sort_ministack_4(t_stk_node **a, t_stk_node **b)
 {
-    t_stack_node    *min_node;
+    t_stk_node    *min_node;
     
     while (stack_len(*a) > 2)
     {
@@ -57,9 +57,9 @@ void    sort_ministack_4(t_stack_node **a, t_stack_node **b)
     pa(a, b, 0);
 }
 
-void    sort_ministack_5(t_stack_node **a, t_stack_node **b)
+void    sort_ministack_5(t_stk_node **a, t_stk_node **b)
 {
-    t_stack_node *min_node;
+    t_stk_node *min_node;
     
     while (stack_len(*a) > 3)
     {
