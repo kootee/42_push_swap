@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:44:04 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/28 16:05:32 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/03/30 15:42:51 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,14 +76,6 @@ int    sort_b_stack(t_stk_node **b, int to_top, int a_cmd)
         }
     }
     
-    // TESTING
-    if (a_cmd == 1)
-        printf("is R\n");
-    else if (a_cmd == 0)
-        printf("is RR\n");    
-    printf("stack len / 2 is %d\n", (stack_len(*b) / 2));
-    // TESTING
-    
     rot_b = 0;
     b_cmd = calculate_cmd(b, temp);
     if (b_cmd == EOR)
@@ -117,6 +109,11 @@ void    push_closest_to_top(t_stk_node **a, t_stk_node **b, int nodes_on_hold[2]
     int rot;
     t_stk_node *temp;
 
+    if (stack_len(*a) == 4)
+    {
+        nodes_on_hold[0] = find_min(*a, 0)->value;
+        nodes_on_hold[1] = find_min(*a, 0)->value;
+    }
     rot = 0;
     temp = *a;
     if (!*a)
@@ -143,7 +140,7 @@ void    find_nodes_to_hold(t_stk_node **a, int segment_size, int hold_node[2])
     temp = *a;
     hold_node[0] = INT_MIN;
     hold_node[1] = INT_MIN;
-    while (temp) //loops through the whole stack looking for indexes under segment size
+    while (temp)
     {   
         if (temp->index < segment_size && temp->index >= 0)
         {
@@ -169,15 +166,15 @@ void    push_swap(t_stk_node **a, t_stk_node **b)
     int             i;
     int             hold_node[2];
     int             segment_size;
-    t_stk_node    *temp;
+    t_stk_node      *temp;
 
     temp = *a;
     segment_size = stack_len(*a)/calculate_segment_size(a);
-    while (*a) //loops until everything is pushed from stack A
+    while (stack_len(*a) > 3)
     {
         i = 0;
         index_nodes(a, segment_size);
-        while (i++ < segment_size)
+        while (i++ < segment_size && stack_len(*a) > 3)
         {
             printf("A ");
             print_stack(a);
@@ -187,9 +184,10 @@ void    push_swap(t_stk_node **a, t_stk_node **b)
             printf("nodes to hold: %d & %d\n", hold_node[0], hold_node[1]);
             printf("commands:\n");
             push_closest_to_top(a, b, hold_node);
-            // printf("-------------\n");
+            printf("-------------\n");
         } // check here if rotating b at the same time makes sense save the rrb or rb "debt"
     }
+    sort_ministack_3(a);
     if (compare_cost(b, find_max(*b)->value, find_max(*b)->value) <= 0)
     {
         while (find_max(*b) != *b)
