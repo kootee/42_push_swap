@@ -6,11 +6,11 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:44:04 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/30 15:42:51 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/03/31 14:55:19 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 void index_nodes(t_stk_node **stack, int segment_size)
 {
@@ -176,15 +176,15 @@ void    push_swap(t_stk_node **a, t_stk_node **b)
         index_nodes(a, segment_size);
         while (i++ < segment_size && stack_len(*a) > 3)
         {
-            printf("A ");
-            print_stack(a);
-            printf("B ");
-            print_stack(b);
+            // printf("A ");
+            // print_stack(a);
+            // printf("B ");
+            // print_stack(b);
             find_nodes_to_hold(a, segment_size, hold_node);
-            printf("nodes to hold: %d & %d\n", hold_node[0], hold_node[1]);
-            printf("commands:\n");
+            // printf("nodes to hold: %d & %d\n", hold_node[0], hold_node[1]);
+            // printf("commands:\n");
             push_closest_to_top(a, b, hold_node);
-            printf("-------------\n");
+            // printf("-------------\n");
         } // check here if rotating b at the same time makes sense save the rrb or rb "debt"
     }
     sort_ministack_3(a);

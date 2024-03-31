@@ -6,11 +6,11 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:37:10 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/28 09:59:22 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/03/31 14:52:47 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/../includes/push_swap.h"
 
 /* MAKE PRINTF YOUR OWN PRINTF */
 

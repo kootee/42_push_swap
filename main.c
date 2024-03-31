@@ -6,11 +6,11 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 19:10:01 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/30 13:27:39 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/03/31 14:54:40 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "includes/../includes/push_swap.h"
 
 void    print_stack(t_stk_node **stack)
 {
@@ -59,7 +59,7 @@ int main(int argc, char **argv)
         else
             push_swap(&a, &b);
     }
-    print_stack(&a);
+    // print_stack(&a);
     free_stack(&a);
 }
 
