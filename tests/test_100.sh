@@ -5,7 +5,7 @@
 #   $1 - permutation to execute push_swap with
 execute_push_swap() {
     local permutation="$1"
-    echo "Executing push_swap with permutation: $permutation"
+    #echo "Executing push_swap with permutation: $permutation"
     ./push_swap "$permutation" > output.txt
     #cat output.txt
     command_count=$(wc -l < output.txt)

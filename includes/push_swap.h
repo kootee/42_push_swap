@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ../includes/push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 19:04:59 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/28 14:45:01 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/03/31 14:51:27 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <limits.h>
 # include <stdbool.h>
 # include <stdio.h>
-# include "libft/includes/libft.h"
+# include "../libft/includes/libft.h"
 
 # define R      1
 # define RR     0

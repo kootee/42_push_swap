@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/14 12:32:47 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/28 09:59:22 by ktoivola         ###   ########.fr       */
+/*   Created: 2024/03/14 12:45:41 by ktoivola          #+#    #+#             */
+/*   Updated: 2024/03/31 14:52:47 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
-void    rotate(t_stk_node **stack)
+static void    rev_rotate(t_stk_node **stack)
 {
     t_stk_node    *last_node;
     int             len;
@@ -21,31 +21,31 @@ void    rotate(t_stk_node **stack)
     if (len == 1 || stack == NULL || *stack == NULL)
         return ;
     last_node = find_last(*stack);
+    last_node->prev->next = NULL;
     last_node->next = *stack;
-    *stack = (*stack)->next;
-    (*stack)->prev = NULL;
+    last_node->prev = NULL;
+    *stack = last_node;
     last_node->next->prev = last_node;
-    last_node->next->next = NULL;
+    }
+
+void    rra(t_stk_node **a, int i)
+{
+    rev_rotate(a);
+    if (!i)
+        write(1, "rra\n", 4);
 }
 
-void    ra(t_stk_node **a, int i)
+void    rrb(t_stk_node **b, int i)
 {
-    rotate(a);
+    rev_rotate(b);
     if (!i)
-        write(1, "ra\n", 3);
+        write(1, "rrb\n", 4);
 }
 
-void    rb(t_stk_node **b, int i)
+void    rrr(t_stk_node **a, t_stk_node **b, int i)
 {
-    rotate(b);
+    rev_rotate(a);
+    rev_rotate(b);
     if (!i)
-        write(1, "rb\n", 3);
-}
-
-void    rr(t_stk_node **a, t_stk_node **b, int i)
-{
-    rotate(a);
-    rotate(b);
-    if (!i)
-        write(1, "rr\n", 3);
+        write(1, "rrr\n", 4);
 }

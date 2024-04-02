@@ -6,14 +6,16 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:32:35 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/28 09:59:22 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/03/31 14:54:23 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 void    sort_ministack_3(t_stk_node **stack)
 {    
+    if (is_sorted(*stack))
+        return ;
     if ((*stack)->value > (*stack)->next->value
         && (*stack)->next->next->value > (*stack)->value)
         sa(stack, 0);

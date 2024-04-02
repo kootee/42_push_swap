@@ -6,11 +6,11 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 12:14:48 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/28 09:59:22 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/03/31 14:52:47 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 static void push(t_stk_node **from_stack, t_stk_node **to_stack)
 {

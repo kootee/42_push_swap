@@ -6,11 +6,11 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:49:00 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/28 14:44:26 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/03/31 14:52:47 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 int	calculate_node_index(t_stk_node *stack, t_stk_node *node_to_find)
 {

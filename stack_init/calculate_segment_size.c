@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   calculate_segment_size.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/26 12:37:13 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/01 13:10:32 by ktoivola         ###   ########.fr       */
+/*   Created: 2024/03/19 09:02:46 by ktoivola          #+#    #+#             */
+/*   Updated: 2024/03/31 14:52:47 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../includes/push_swap.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+int calculate_segment_size(int i)
 {
-	size_t	i;
+    int number_of_segments;
 
-	i = 0;
-	if (!dst && !src)
-		return (0);
-	while (i < n)
-	{
-		*(unsigned char *)dst++ = *(unsigned char *)src++;
-		i++;
-	}
-	return (dst - i);
+    number_of_segments = 5 + (((i - 100) * 3) / 200);
+    return (number_of_segments);
 }

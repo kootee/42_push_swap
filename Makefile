@@ -5,19 +5,19 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -g #remove g after
 
 SRCS = main.c \
-		append_node.c \
-		free_mem_functions.c \
-		init_stack.c \
-		is_sorted.c \
-		push_swap_utils.c \
-		push_swap.c \
-		push.c \
-		rotate.c \
-		reverse_rotate.c \
-		swap.c \
-		sort_ministack.c \
-		check_dbl_rot.c \
-		calculate_stack_position.c
+		push_swap_utilities/free_mem_functions.c \
+		push_swap_utilities/push_swap_utils.c \
+		push_swap_utilities/is_sorted.c \
+		sort_algorithms/sort_ministack.c \
+		sort_algorithms/check_dbl_rot.c \
+		sort_algorithms/push_swap.c \
+		stack_commands/reverse_rotate.c \
+		stack_commands/rotate.c \
+		stack_commands/push.c \
+		stack_commands/swap.c \
+		stack_init/append_node.c \
+		stack_init/init_stack.c \
+		stack_init/calculate_stack_position.c
 
 LIBFT = libft/libft.a
 
