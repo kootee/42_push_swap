@@ -6,13 +6,13 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:12:14 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/25 09:59:39 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/04/04 14:07:12 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/get_next_line.h"
 
-static void	copy_til_newline(char *new_line, t_list *list_node)
+static void	copy_til_newline(char *new_line, t_gnl_lst *list_node)
 {
 	int	i;
 	int	j;
@@ -38,7 +38,7 @@ static void	copy_til_newline(char *new_line, t_list *list_node)
 	new_line[j] = 0;
 }
 
-static size_t	count_til_newline(t_list *list_node)
+static size_t	count_til_newline(t_gnl_lst *list_node)
 {
 	size_t	len;
 	int		j;
@@ -59,16 +59,16 @@ static size_t	count_til_newline(t_list *list_node)
 	return (len);
 }
 
-static char	*prep_for_nextline(t_list **list)
+static char	*prep_for_nextline(t_gnl_lst **list)
 {
-	t_list	*clean_node;
-	t_list	*last_node;
+	t_gnl_lst	*clean_node;
+	t_gnl_lst	*last_node;
 	int		i;
 	char	*buffer;
 
 	i = 0;
-	last_node = ft_lstlast(*list);
-	clean_node = malloc(sizeof(t_list));
+	last_node = ft_lstlast_gnl(*list);
+	clean_node = malloc(sizeof(t_gnl_lst));
 	if (clean_node == NULL)
 		return (clear_list(list, NULL, NULL));
 	while (last_node->string[i])
@@ -84,7 +84,7 @@ static char	*prep_for_nextline(t_list **list)
 	return (buffer);
 }
 
-static int	get_lines(t_list **str_list, int fd)
+static int	get_lines(t_gnl_lst **str_list, int fd)
 {
 	char	*buffer;
 	int		bytes_read;
@@ -112,7 +112,7 @@ static int	get_lines(t_list **str_list, int fd)
 
 char	*get_next_line(int fd)
 {
-	static t_list	*str_list = NULL;
+	static t_gnl_lst	*str_list = NULL;
 	char			*next_line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, &next_line, 0) < 0)

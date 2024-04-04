@@ -58,7 +58,7 @@ PRINTF = srcs/printf/ft_printf.c \
 		srcs/printf/read_format.c
 
 GNL = 	srcs/getnextline/get_next_line.c \
-		srcs/getnextline/get_next_line_utils.c
+		srcs/getnextline/get_next_line_utils.c 
 
 OBJS = ${SRCS:.c=.o} 
 

@@ -11,6 +11,7 @@ SRCS = main.c \
 		sort_algorithms/sort_ministack.c \
 		sort_algorithms/check_dbl_rot.c \
 		sort_algorithms/push_swap.c \
+		sort_algorithms/sort_b_stack.c \
 		stack_commands/reverse_rotate.c \
 		stack_commands/rotate.c \
 		stack_commands/push.c \

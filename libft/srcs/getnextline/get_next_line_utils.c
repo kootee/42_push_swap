@@ -6,15 +6,15 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:08:45 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/25 09:59:48 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/04/04 14:05:03 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/get_next_line.h" 
 
-char	*clear_list(t_list **list, t_list *new_node, char *buffer)
+char	*clear_list(t_gnl_lst **list, t_gnl_lst *new_node, char *buffer)
 {
-	t_list	*temp;
+	t_gnl_lst	*temp;
 
 	if (*list == NULL)
 		return (NULL);
@@ -36,7 +36,7 @@ char	*clear_list(t_list **list, t_list *new_node, char *buffer)
 	return (NULL);
 }
 
-void	add_clean_node(t_list *last_node, t_list *clean_node, char *buff)
+void	add_clean_node(t_gnl_lst *last_node, t_gnl_lst *clean_node, char *buff)
 {
 	int	i;
 	int	j;
@@ -52,15 +52,15 @@ void	add_clean_node(t_list *last_node, t_list *clean_node, char *buff)
 	clean_node->next = NULL;
 }
 
-int	ft_lstadd_node(t_list **lst, char *buffer)
+int	ft_lstadd_node(t_gnl_lst **lst, char *buffer)
 {
-	t_list	*last_node;
-	t_list	*new_node;
+	t_gnl_lst	*last_node;
+	t_gnl_lst	*new_node;
 
 	if (!lst || !buffer)
 		return (0);
-	last_node = ft_lstlast(*lst);
-	new_node = malloc(sizeof(t_list));
+	last_node = ft_lstlast_gnl(*lst);
+	new_node = malloc(sizeof(t_gnl_lst));
 	if (!new_node)
 		return (0);
 	new_node->string = buffer;
@@ -72,7 +72,7 @@ int	ft_lstadd_node(t_list **lst, char *buffer)
 	return (1);
 }
 
-int	found_newline(t_list *node)
+int	found_newline(t_gnl_lst *node)
 {
 	int		i;
 
@@ -92,7 +92,7 @@ int	found_newline(t_list *node)
 	return (0);
 }
 
-t_list	*ft_lstlast(t_list *lst)
+t_gnl_lst	*ft_lstlast_gnl(t_gnl_lst *lst)
 {
 	if (!lst)
 		return (0);

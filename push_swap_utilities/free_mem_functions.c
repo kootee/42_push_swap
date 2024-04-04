@@ -6,11 +6,11 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:37:10 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/04/03 15:58:48 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/04/04 12:34:10 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/../includes/push_swap.h"
+#include "../includes/push_swap.h"
 
 void    handle_error(t_stk_node **stack,char **argv, int i, int argc)
 {

@@ -6,43 +6,43 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 13:53:36 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/31 14:52:47 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/04/04 14:52:49 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void swap(t_stk_node **head)
+static void	swap(t_stk_node **head)
 {
-    if (*head == NULL || head == NULL || stack_len(*head) == 1)
-        return ;
-    *head = (*head)->next;
-    (*head)->prev->prev = *head;
-    (*head)->prev->next = (*head)->next;
-    if ((*head)->next)
-        (*head)->next->prev = (*head)->prev;
-    (*head)->next = (*head)->prev;
-    (*head)->prev = NULL;
+	if (*head == NULL || head == NULL || stack_len(*head) == 1)
+		return ;
+	*head = (*head)->next;
+	(*head)->prev->prev = *head;
+	(*head)->prev->next = (*head)->next;
+	if ((*head)->next)
+		(*head)->next->prev = (*head)->prev;
+	(*head)->next = (*head)->prev;
+	(*head)->prev = NULL;
 }
 
-void    sa(t_stk_node **a, int i)
+void	sa(t_stk_node **a, int i)
 {
-    swap(a);
-    if (i != 2)
-        write(1, "sa\n", 3);
+	swap(a);
+	if (i != 2)
+		write(1, "sa\n", 3);
 }
 
-void    sb(t_stk_node **b, int i)
+void	sb(t_stk_node **b, int i)
 {
-    swap(b);
-    if (i != 2)
-        write(1, "sb\n", 3);
+	swap(b);
+	if (i != 2)
+		write(1, "sb\n", 3);
 }
 
-void    ss(t_stk_node **a, t_stk_node **b, int i)
+void	ss(t_stk_node **a, t_stk_node **b, int i)
 {
-    swap(a);
-    swap(b);
-    if (!i)
-        write(1, "ss\n", 3);
+	swap(a);
+	swap(b);
+	if (!i)
+		write(1, "ss\n", 3);
 }

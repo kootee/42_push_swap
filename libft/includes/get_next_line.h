@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:09:09 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/01/03 14:27:01 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/04/04 14:04:46 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef struct s_list
+typedef struct s_gnl_lst
 {
 	char			*string;
-	struct s_list	*next;
-}				t_list;
+	struct s_gnl_lst	*next;
+}				t_gnl_lst;
 
-char	*get_next_line(int fd);
-char	*clear_list(t_list **list, t_list *new_node, char *buffer);
-void	add_clean_node(t_list *last_node, t_list *clean_node, char *buff);
-int		ft_lstadd_node(t_list **lst, char *buf);
-int		found_newline(t_list *node);
-t_list	*ft_lstlast(t_list *lst);
+char		*get_next_line(int fd);
+char		*clear_list(t_gnl_lst **list, t_gnl_lst *new_node, char *buffer);
+void		add_clean_node(t_gnl_lst *last_n, t_gnl_lst *clean_n, char *buff);
+int			ft_lstadd_node(t_gnl_lst **lst, char *buf);
+int			found_newline(t_gnl_lst *node);
+t_gnl_lst	*ft_lstlast_gnl(t_gnl_lst *lst);
 
 #endif
