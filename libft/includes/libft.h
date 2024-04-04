@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 09:45:08 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/25 14:57:20 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/04/04 12:25:12 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
-# include "printf.h"
+# include "ft_printf.h"
+# include "get_next_line.h"
 
 /* ******* Libft functions ******* */
 

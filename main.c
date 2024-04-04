@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 19:10:01 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/31 14:54:40 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/04/03 10:13:21 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int main(int argc, char **argv)
 
     a = NULL;
     b = NULL;
-    if (argc < 2 || !argv)
+    if (argc < 2)
         exit(1);
     init_stack(&a, argv, argc);
     if (!is_sorted(a))

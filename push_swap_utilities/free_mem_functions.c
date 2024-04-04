@@ -6,25 +6,26 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:37:10 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/31 14:52:47 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/04/03 15:58:48 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/../includes/push_swap.h"
 
-/* MAKE PRINTF YOUR OWN PRINTF */
-
-void    handle_error(t_stk_node **stack,char **argv, int i)
+void    handle_error(t_stk_node **stack,char **argv, int i, int argc)
 {
     free_stack(stack);
-    // free_list(argv);
-    argv = NULL;
+    if (argc == 2)
+        free_list(argv);
+    // argv = NULL;
     if (i == 1)
-        printf("incorrect input, only positive or negative numbers allowed\n");
+        ft_printf("incorrect input, only positive or negative numbers allowed\n");
     else if (i == 2)
-        printf("memory overflow, enter numbers between MAX_INT and MIN_INT\n");
+        ft_printf("memory overflow, enter numbers between MAX_INT and MIN_INT\n");
     else if (i == 3)
-        printf("no duplicate numbers allowed\n");
+        ft_printf("no duplicate numbers allowed\n");
+    else if (i == 4)
+        ft_printf("malloc error\n");
     exit(i);
 }
 
@@ -49,7 +50,7 @@ void    free_stack(t_stk_node **stack)
     t_stk_node    *temp;
     t_stk_node    *current;
 
-    if (stack == NULL)
+    if (stack == NULL || *stack == NULL)
         return ;
     current = *stack;
     while (current)

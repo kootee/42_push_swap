@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:50:50 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/03/31 15:21:09 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/04/03 11:30:00 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ static int input_error(char *str)
     i = 0;
     while (str[i])
     {
-        // printf("checking %c for error\n", str[i]);
         if (!('0' <= str[i] && str[i] <= '9'))
             return (1);
         else if ((str[i] == '-' || str[i] == '+') && i != 0)
@@ -90,13 +89,14 @@ void    init_stack(t_stk_node **a, char **argv, int argc)
     while(argv[i])
     {
         if (input_error(argv[i]))
-            handle_error(a, argv, 1); //need to free all previous ones
+            handle_error(a, argv, 1, argc);
         n = ft_atol(argv[i]);
         if (n > INT_MAX || n < INT_MIN)
-            handle_error(a, argv, 2);
+            handle_error(a, argv, 2, argc);
         if (duplicate_error(*a, n))
-            handle_error(a, argv, 3); 
-        append_node(a, n);
+            handle_error(a, argv, 3, argc); 
+        if (append_node(a, n))
+            handle_error(a, argv, 4, argc);
         i++;
     }
     if (argc == 2)

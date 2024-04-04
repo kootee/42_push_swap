@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include <limits.h>
 # include <stdbool.h>
-# include <stdio.h>
+# include <stdio.h> // remove?
 # include "../libft/includes/libft.h"
 
 # define R      1
@@ -36,13 +36,13 @@ int main(int argc, char **argv);
 
 /* Initialise functions */
 void    init_stack(t_stk_node **a, char **argv, int argc);
-void    append_node(t_stk_node **a, int n);
+int    append_node(t_stk_node **a, int n);
 int     calculate_segment_size(t_stk_node **a);
 
 /* Free memory and error handling */
 void    free_list(char **ptr);
 void    free_stack(t_stk_node **stack);
-void    handle_error(t_stk_node **a,char **argv, int argc);
+void    handle_error(t_stk_node **a,char **argv, int err_no, int argc);
 
 /* Push_swap sort algorithms */
 int     sort_b_stack(t_stk_node **b, int val_to_push, int cmd);
