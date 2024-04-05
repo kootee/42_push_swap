@@ -6,22 +6,20 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:49:00 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/04/04 14:49:29 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/04/05 11:01:14 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	calculate_node_index(t_stk_node *stack, t_stk_node *node_to_find)
+int	get_node_idx(t_stk_node *stack, t_stk_node *node_to_find)
 {
-	t_stk_node	*temp;
 	int			i;
 
 	i = 1;
-	temp = stack;
-	while (temp != node_to_find)
+	while (stack != node_to_find)
 	{
-		temp = temp->next;
+		stack = stack->next;
 		i++;
 	}
 	return (i);
@@ -34,7 +32,7 @@ int	calculate_cmd(t_stk_node **stack, t_stk_node *node_to_find)
 	int			node_index;
 
 	temp = *stack;
-	node_index = calculate_node_index(*stack, node_to_find);
+	node_index = get_node_idx(*stack, node_to_find);
 	s_len = stack_len(*stack);
 	if (s_len % 2 == 0)
 	{

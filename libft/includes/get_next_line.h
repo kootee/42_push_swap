@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:09:09 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/04/04 14:04:46 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/04/05 10:21:36 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 typedef struct s_gnl_lst
 {
-	char			*string;
+	char				*string;
 	struct s_gnl_lst	*next;
 }				t_gnl_lst;
 

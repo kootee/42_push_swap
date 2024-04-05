@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:12:14 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/04/04 14:07:12 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/04/05 10:22:16 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ static char	*prep_for_nextline(t_gnl_lst **list)
 {
 	t_gnl_lst	*clean_node;
 	t_gnl_lst	*last_node;
-	int		i;
-	char	*buffer;
+	int			i;
+	char		*buffer;
 
 	i = 0;
 	last_node = ft_lstlast_gnl(*list);
@@ -113,7 +113,7 @@ static int	get_lines(t_gnl_lst **str_list, int fd)
 char	*get_next_line(int fd)
 {
 	static t_gnl_lst	*str_list = NULL;
-	char			*next_line;
+	char				*next_line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, &next_line, 0) < 0)
 		return (clear_list(&str_list, NULL, NULL));

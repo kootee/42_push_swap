@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:32:35 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/04/04 15:01:10 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/04/05 11:03:56 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,30 +56,56 @@ void	sort_ministack_4(t_stk_node **a, t_stk_node **b)
 	}
 	if ((*a)->value > (*a)->next->value)
 		sa(a, 0);
-	pa(a, b, 0);
-	pa(a, b, 0);
+	while(*b)
+		pa(a, b, 0);
 }
 
+t_stk_node *find_closest_min(t_stk_node *stack)
+{
+	int			min_val;
+	t_stk_node	*temp;
+	t_stk_node	*min_node;
+	t_stk_node	*next_min_node;
+
+	if (stack == NULL)
+		return (NULL);
+	temp = stack;
+	min_val = INT_MAX;
+	min_node = find_min(stack, false);
+	while (temp)
+	{
+		if (temp->value < min_val && temp->value > min_node->value)
+		{
+			min_val = temp->value;
+			next_min_node = temp;
+		}
+		temp = temp->next;
+	}
+	if (get_node_idx(stack, min_node) < get_node_idx(stack, next_min_node))
+		return (min_node);
+	else
+		return (next_min_node);
+}
 void	sort_ministack_5(t_stk_node **a, t_stk_node **b)
 {
-	t_stk_node	*min_node;
+	t_stk_node	*node_to_push;
 
 	while (stack_len(*a) > 3)
 	{
-		min_node = find_min(*a, false);
-		if (min_node == (*a)->next)
+		node_to_push = find_closest_min(*a);
+		if (node_to_push == (*a)->next)
 			sa(a, 0);
-		else if (min_node == find_last(*a)->prev)
+		else if (node_to_push == find_last(*a)->prev)
 			do_twice(rra, a, 0);
-		else if (min_node == (*a)->next->next)
+		else if (node_to_push == (*a)->next->next)
 			do_twice(ra, a, 0);
-		else if (min_node == find_last(*a))
+		else if (node_to_push == find_last(*a))
 			rra(a, 0);
 		pb(b, a, 0);
 	}
 	sort_ministack_3(a);
 	if ((*b)->value < (*b)->next->value)
 		sb(b, 0);
-	pa(a, b, 0);
-	pa(a, b, 0);
+	while(*b)
+		pa(a, b, 0);
 }

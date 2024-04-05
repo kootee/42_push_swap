@@ -6,37 +6,13 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 19:10:01 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/04/04 16:58:01 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/04/05 10:12:34 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/../includes/push_swap.h"
 
-void    print_stack(t_stk_node **stack)
-{
-	t_stk_node *temp;
-	
-	ft_printf("stack:\n");
-	temp = *stack;
-	while (temp)
-	{
-		ft_printf("%i\n", temp->value);
-		temp = temp->next;
-	}
-}
-
-void    print_strings(char **argv)
-{
-	int i = 0;
-	while (argv[i])
-	{
-		ft_printf("num is %s\n", argv[i]);
-		i++;
-	}
-	ft_printf("end of numbers\n");
-}
-
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_stk_node	*a;
 	t_stk_node	*b;
@@ -61,7 +37,5 @@ int main(int argc, char **argv)
 		else
 			push_swap(&a, &b, segment_size);
 	}
-	print_stack(&a);
 	free_stack(&a);
 }
-
