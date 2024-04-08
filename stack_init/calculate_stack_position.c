@@ -6,13 +6,13 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:49:00 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/04/05 12:08:50 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/04/08 16:07:14 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	get_node_idx(t_stk_node *stack, t_stk_node *node_to_find)
+static int	get_node_idx(t_stk_node *stack, t_stk_node *node_to_find)
 {
 	int			i;
 
@@ -51,6 +51,7 @@ int	calculate_cmd(t_stk_node **stack, t_stk_node *node_to_find)
 			return (RR);
 	}
 }
+
 int	calculate_cost_to_top(t_stk_node *stack, t_stk_node *node)
 {
 	int	cost_to_top;
@@ -59,7 +60,7 @@ int	calculate_cost_to_top(t_stk_node *stack, t_stk_node *node)
 
 	node_idx = get_node_idx(stack, node);
 	len = stack_len(stack);
-	if (node_idx > len/2 + 1)
+	if (node_idx > len / 2 + 1)
 		cost_to_top = len - node_idx + 1;
 	else
 		cost_to_top = node_idx - 1;

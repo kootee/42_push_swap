@@ -2,14 +2,14 @@ NAME = push_swap
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -g #remove g after
+CFLAGS = -Wall -Wextra -Werror
 
 SRCS = main.c \
 		push_swap_utilities/free_mem_functions.c \
 		push_swap_utilities/push_swap_utils.c \
-		push_swap_utilities/is_sorted.c \
+		push_swap_utilities/stack_utils.c \
+		sort_algorithms/check_dbl_rotation.c \
 		sort_algorithms/sort_ministack.c \
-		sort_algorithms/check_dbl_rot.c \
 		sort_algorithms/push_swap.c \
 		sort_algorithms/sort_b_stack.c \
 		stack_commands/reverse_rotate.c \

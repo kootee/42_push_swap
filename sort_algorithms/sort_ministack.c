@@ -6,11 +6,39 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:32:35 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/04/05 12:18:56 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/04/08 16:03:02 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+static t_stk_node	*find_closest_min(t_stk_node *stack)
+{
+	int			min_val;
+	t_stk_node	*temp;
+	t_stk_node	*min_node;
+	t_stk_node	*next_min_node;
+
+	if (stack == NULL)
+		return (NULL);
+	temp = stack;
+	min_val = INT_MAX;
+	min_node = find_min(stack, false);
+	while (temp)
+	{
+		if (temp->value < min_val && temp->value > min_node->value)
+		{
+			min_val = temp->value;
+			next_min_node = temp;
+		}
+		temp = temp->next;
+	}
+	if (calculate_cost_to_top(stack, min_node)
+		<= calculate_cost_to_top(stack, next_min_node))
+		return (min_node);
+	else
+		return (next_min_node);
+}
 
 void	sort_ministack_3(t_stk_node **stack)
 {
@@ -56,37 +84,10 @@ void	sort_ministack_4(t_stk_node **a, t_stk_node **b)
 	}
 	if ((*a)->value > (*a)->next->value)
 		sa(a, 0);
-	while(*b)
+	while (*b)
 		pa(a, b, 0);
 }
 
-t_stk_node *find_closest_min(t_stk_node *stack)
-{
-	int			min_val;
-	t_stk_node	*temp;
-	t_stk_node	*min_node;
-	t_stk_node	*next_min_node;
-
-	if (stack == NULL)
-		return (NULL);
-	temp = stack;
-	min_val = INT_MAX;
-	min_node = find_min(stack, false);
-	while (temp)
-	{
-		if (temp->value < min_val && temp->value > min_node->value)
-		{
-			min_val = temp->value;
-			next_min_node = temp;
-		}
-		temp = temp->next;
-	}
-	if (calculate_cost_to_top(stack, min_node) <= 
-		calculate_cost_to_top(stack, next_min_node))
-		return (min_node);
-	else
-		return (next_min_node);
-}
 void	sort_ministack_5(t_stk_node **a, t_stk_node **b)
 {
 	t_stk_node	*node_to_push;
@@ -110,6 +111,6 @@ void	sort_ministack_5(t_stk_node **a, t_stk_node **b)
 	sort_ministack_3(a);
 	if ((*b)->value < (*b)->next->value)
 		sb(b, 0);
-	while(*b)
+	while (*b)
 		pa(a, b, 0);
 }

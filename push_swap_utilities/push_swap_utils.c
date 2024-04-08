@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 13:47:56 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/04/03 14:54:56 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/04/08 15:57:09 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,69 +18,31 @@ void	do_twice(void (*f)(t_stk_node **a, int i), t_stk_node **s, int x)
 	f(s, x);
 }
 
-t_stk_node	*find_max(t_stk_node *stack)
+bool	is_sorted(t_stk_node *stack)
 {
-	int			max_val;
-	t_stk_node	*max_node;
-
 	if (stack == NULL)
-		return (NULL);
-	max_val = INT_MIN;
-	while (stack)
+		return (1);
+	while (stack->next)
 	{
-		if (stack->value > max_val)
-		{
-			max_val = stack->value;
-			max_node = stack;
-		}
+		if (stack->value > stack->next->value)
+			return (false);
 		stack = stack->next;
 	}
-	return (max_node);
+	return (true);
 }
 
-t_stk_node	*find_min(t_stk_node *stack, bool for_index)
+void	handle_error(t_stk_node **stack, char **argv, int argc)
 {
-	int			min_val;
-	t_stk_node	*min_node;
-
-	if (stack == NULL)
-		return (NULL);
-	min_val = INT_MAX;
-	while (stack)
-	{
-		if (stack->value < min_val && !for_index)
-		{
-			min_val = stack->value;
-			min_node = stack;
-		}
-		else if (stack->value < min_val && stack->index < 0)
-		{
-			min_val = stack->value;
-			min_node = stack;
-		}
-		stack = stack->next;
-	}
-	return (min_node);
-}
-
-t_stk_node	*find_last(t_stk_node *node)
-{
-	if (node == NULL)
-		return (NULL);
-	while (node->next)
-		node = node->next;
-	return (node);
-}
-
-int	stack_len(t_stk_node *stack)
-{
-	int	i;
+	char	*error_message;
+	int		i;
 
 	i = 0;
-	while (stack)
-	{
-		i++;
-		stack = stack->next;
-	}
-	return (i);
+	error_message = "Error\n";
+	while (error_message[i])
+		ft_putchar_fd(error_message[i++], STDERR_FILENO);
+	if (argc == 2)
+		free_list(argv);
+	argv = NULL;
+	free_stack(stack);
+	exit (0);
 }

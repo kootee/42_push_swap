@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:50:50 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/04/08 14:44:22 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/04/08 15:31:07 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,20 +85,20 @@ void	init_stack(t_stk_node **a, char **argv, int argc)
 	if (argc == 2)
 		argv = ft_split(argv[1], ' ');
 	if (*argv == NULL)
-		handle_error(a, argv, 1, argc);
+		handle_error(a, argv, 1);
 	if (argc > 2)
 		i++;
 	while (argv[i])
 	{
 		if (input_error(argv[i]))
-			handle_error(a, argv, 1, argc);
+			handle_error(a, argv, argc);
 		n = ft_atol(argv[i]);
 		if (n > INT_MAX || n < INT_MIN)
-			handle_error(a, argv, 2, argc);
+			handle_error(a, argv, argc);
 		if (duplicate_error(*a, n))
-			handle_error(a, argv, 3, argc);
+			handle_error(a, argv, argc);
 		if (append_node(a, n))
-			handle_error(a, argv, 4, argc);
+			handle_error(a, argv, argc);
 		i++;
 	}
 	if (argc == 2)

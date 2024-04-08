@@ -6,24 +6,11 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 19:10:01 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/04/08 14:39:28 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/04/08 16:08:08 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/../includes/push_swap.h"
-
-void    print_stack(t_stk_node **stack)
-{
-	t_stk_node *temp;
-	
-	ft_printf("stack:\n");
-	temp = *stack;
-	while (temp)
-	{
-		ft_printf("%i\n", temp->value);
-		temp = temp->next;
-	}
-}
 
 int	main(int argc, char **argv)
 {
