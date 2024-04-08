@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:50:50 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/04/05 14:53:34 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/04/08 14:44:22 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ static int	input_error(char *str)
 	i = 0;
 	if (str[i] == '-')
 		i++;
+	if (!('0' <= str[i] && str[i] <= '9'))
+		return (1);
 	while (str[i])
 	{
 		if (!('0' <= str[i] && str[i] <= '9'))
@@ -82,8 +84,8 @@ void	init_stack(t_stk_node **a, char **argv, int argc)
 	i = 0;
 	if (argc == 2)
 		argv = ft_split(argv[1], ' ');
-	if (argv == NULL || *argv == NULL)
-		exit(1);
+	if (*argv == NULL)
+		handle_error(a, argv, 1, argc);
 	if (argc > 2)
 		i++;
 	while (argv[i])

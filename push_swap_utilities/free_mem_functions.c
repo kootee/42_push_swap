@@ -6,27 +6,27 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:37:10 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/04/04 16:57:01 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/04/08 14:36:59 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	handle_error(t_stk_node **stack, char **argv, int i, int argc)
+void	handle_error(t_stk_node **stack, char **argv, int err_no, int argc)
 {
-	free_stack(stack);
+	char	*error_message;
+	int		i;
+	
+	i = 0;
+	err_no = 0;
 	if (argc == 2)
 		free_list(argv);
+	free_stack(stack);
 	argv = NULL;
-	if (i == 1)
-		ft_printf("only positive or negative numbers allowed\n");
-	else if (i == 2)
-		ft_printf("over MAX_INT or under MIN_int not allowed\n");
-	else if (i == 3)
-		ft_printf("no duplicate numbers allowed\n");
-	else if (i == 4)
-		ft_printf("malloc error\n");
-	exit(i);
+	error_message = "Error\n";
+	while(error_message[i])
+		ft_putchar_fd(error_message[i++], STDERR_FILENO);
+	exit(err_no);
 }
 
 void	free_list(char **ptr)
