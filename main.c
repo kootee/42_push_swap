@@ -6,11 +6,24 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 19:10:01 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/04/05 10:12:34 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/04/08 10:09:44 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/../includes/push_swap.h"
+
+void    print_stack(t_stk_node **stack)
+{
+	t_stk_node *temp;
+	
+	ft_printf("stack:\n");
+	temp = *stack;
+	while (temp)
+	{
+		ft_printf("%i\n", temp->value);
+		temp = temp->next;
+	}
+}
 
 int	main(int argc, char **argv)
 {
@@ -23,6 +36,7 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		exit(1);
 	init_stack(&a, argv, argc);
+	ft_printf("stack len is %i\n", stack_len(a));
 	if (!is_sorted(a))
 	{
 		segment_size = stack_len(a) / calculate_segment_size(&a);
@@ -37,5 +51,6 @@ int	main(int argc, char **argv)
 		else
 			push_swap(&a, &b, segment_size);
 	}
+	print_stack(&a);
 	free_stack(&a);
 }

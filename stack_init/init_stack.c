@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:50:50 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/04/04 14:49:16 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/04/05 14:53:34 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,11 @@ static int	input_error(char *str)
 	int	i;
 
 	i = 0;
+	if (str[i] == '-')
+		i++;
 	while (str[i])
 	{
 		if (!('0' <= str[i] && str[i] <= '9'))
-			return (1);
-		else if ((str[i] == '-' || str[i] == '+') && i != 0)
 			return (1);
 		i++;
 	}

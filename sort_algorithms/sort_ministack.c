@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:32:35 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/04/05 11:03:56 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/04/05 12:18:56 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ t_stk_node *find_closest_min(t_stk_node *stack)
 		}
 		temp = temp->next;
 	}
-	if (get_node_idx(stack, min_node) < get_node_idx(stack, next_min_node))
+	if (calculate_cost_to_top(stack, min_node) <= 
+		calculate_cost_to_top(stack, next_min_node))
 		return (min_node);
 	else
 		return (next_min_node);
@@ -92,7 +93,10 @@ void	sort_ministack_5(t_stk_node **a, t_stk_node **b)
 
 	while (stack_len(*a) > 3)
 	{
-		node_to_push = find_closest_min(*a);
+		if (stack_len(*a) == 5)
+			node_to_push = find_closest_min(*a);
+		else
+			node_to_push = find_min(*a, false);
 		if (node_to_push == (*a)->next)
 			sa(a, 0);
 		else if (node_to_push == find_last(*a)->prev)

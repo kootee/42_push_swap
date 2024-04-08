@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 10:17:52 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/04/05 10:54:33 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/04/05 12:03:32 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int			stack_len(t_stk_node *stack);
 int			count_cmds(t_stk_node **b, int val_to_push, int cmd);
 int			get_node_idx(t_stk_node *stack, t_stk_node *node_to_find);
 int			calculate_cmd(t_stk_node **stack, t_stk_node *node_to_find);
+int			calculate_cost_to_top(t_stk_node *stack, t_stk_node *node);
 void		do_twice(void (*f)(t_stk_node **a, int i), t_stk_node **s, int x);
 
 

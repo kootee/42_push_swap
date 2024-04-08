@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:44:04 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/04/04 17:33:51 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/04/05 15:35:15 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,13 +121,16 @@ void	push_swap(t_stk_node **a, t_stk_node **b, int segment_size)
 	{
 		i = 0;
 		index_nodes(a, segment_size);
-		while (i++ < segment_size && stack_len(*a) > 3)
+		while (i++ < segment_size && *a != NULL)
 		{
+			ft_printf("---A---\n");
+			print_stack(a);
+			ft_printf("---B---\n");
+			print_stack(b);
 			find_nodes_to_hold(a, segment_size, hold_node);
 			push_closest_to_top(a, b, hold_node);
 		}
 	}
-	sort_ministack_3(a);
 	if (compare_cost(b, find_max(*b)->value, find_max(*b)->value) <= 0)
 	{
 		while (find_max(*b) != *b)
