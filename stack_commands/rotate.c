@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 12:32:47 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/04/04 14:54:05 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/04/09 10:31:39 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,24 +28,21 @@ void	rotate(t_stk_node **stack)
 	last_node->next->next = NULL;
 }
 
-void	ra(t_stk_node **a, int i)
+void	ra(t_stk_node **a)
 {
 	rotate(a);
-	if (!i)
-		write(1, "ra\n", 3);
+	write(1, "ra\n", 3);
 }
 
-void	rb(t_stk_node **b, int i)
+void	rb(t_stk_node **b)
 {
 	rotate(b);
-	if (!i)
-		write(1, "rb\n", 3);
+	write(1, "rb\n", 3);
 }
 
-void	rr(t_stk_node **a, t_stk_node **b, int i)
+void	rr(t_stk_node **a, t_stk_node **b)
 {
 	rotate(a);
 	rotate(b);
-	if (!i)
-		write(1, "rr\n", 3);
+	write(1, "rr\n", 3);
 }

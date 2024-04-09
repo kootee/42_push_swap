@@ -80,11 +80,9 @@ bonus: .bonus
 	@touch .bonus
 
 clean:
-	@echo "cleaning libft..."
 	@rm -f ${OBJS} ${BOBJS} ${PRINTFOBJS} ${GNLOBJS}
 
 fclean: clean
-	@echo "fcleaning libft..."
 	@rm -f ${NAME} .bonus
 
 re: fclean all

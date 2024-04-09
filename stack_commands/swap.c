@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 13:53:36 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/04/04 14:52:49 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/04/09 10:32:04 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,21 @@ static void	swap(t_stk_node **head)
 	(*head)->prev = NULL;
 }
 
-void	sa(t_stk_node **a, int i)
+void	sa(t_stk_node **a)
 {
 	swap(a);
-	if (i != 2)
-		write(1, "sa\n", 3);
+	write(1, "sa\n", 3);
 }
 
-void	sb(t_stk_node **b, int i)
+void	sb(t_stk_node **b)
 {
 	swap(b);
-	if (i != 2)
-		write(1, "sb\n", 3);
+	write(1, "sb\n", 3);
 }
 
-void	ss(t_stk_node **a, t_stk_node **b, int i)
+void	ss(t_stk_node **a, t_stk_node **b)
 {
 	swap(a);
 	swap(b);
-	if (!i)
-		write(1, "ss\n", 3);
+	write(1, "ss\n", 3);
 }

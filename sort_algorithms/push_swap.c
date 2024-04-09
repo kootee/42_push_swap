@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:44:04 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/04/08 16:00:09 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/04/09 10:32:44 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,29 +28,6 @@ static void	index_nodes(t_stk_node **stack, int segment_size)
 		min_node->index = i;
 		i++;
 	}
-}
-
-int	compare_cost(t_stk_node **stack, int hold_1, int hold_2)
-{
-	int			i;
-	int			j;
-	t_stk_node	*temp;
-
-	temp = *stack;
-	i = 0;
-	j = 1;
-	while (temp && temp->value != hold_1)
-	{
-		temp = temp->next;
-		i++;
-	}
-	temp = find_last(*stack);
-	while (temp && temp->value != hold_2)
-	{
-		temp = temp->prev;
-		j++;
-	}
-	return (i - j);
 }
 
 static void	push_closest_to_top(t_stk_node **a, t_stk_node **b, int nodes[2])
@@ -129,5 +106,5 @@ void	push_swap(t_stk_node **a, t_stk_node **b, int segment_size)
 	}
 	final_sort_b_stack(b);
 	while (*b)
-		pa(a, b, 0);
+		pa(a, b);
 }

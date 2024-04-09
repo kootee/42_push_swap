@@ -33,11 +33,13 @@ libft/libft.a:
 	${MAKE} -C libft
 
 clean:
-	rm -f ${OBJS}
-	make clean -C libft
+	@echo "cleaning push_swap..."
+	@rm -f ${OBJS}
+	@make clean -C libft
 
 fclean: clean
-	rm -f ${NAME}
-	make fclean -C libft
+	@echo "fcleaning push_swap..."
+	@rm -f ${NAME}
+	@make fclean -C libft
 
 re: fclean all

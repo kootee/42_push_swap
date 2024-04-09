@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:32:35 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/04/08 16:03:02 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/04/09 10:30:01 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,24 +46,24 @@ void	sort_ministack_3(t_stk_node **stack)
 		return ;
 	if ((*stack)->value > (*stack)->next->value
 		&& (*stack)->next->next->value > (*stack)->value)
-		sa(stack, 0);
+		sa(stack);
 	else if ((*stack)->value > (*stack)->next->value
 		&& (*stack)->next->value > (*stack)->next->next->value)
 	{
-		sa(stack, 0);
-		rra(stack, 0);
+		sa(stack);
+		rra(stack);
 	}
 	else if ((*stack)->value > (*stack)->next->next->value
 		&& (*stack)->next->next->value > (*stack)->next->value)
-		ra(stack, 0);
+		ra(stack);
 	else if (((*stack)->next->value > (*stack)->next->next->value)
 		&& ((*stack)->next->value > (*stack)->value)
 		&& ((*stack)->value > (*stack)->next->next->value))
-		rra(stack, 0);
+		rra(stack);
 	else
 	{
-		sa(stack, 0);
-		ra(stack, 0);
+		sa(stack);
+		ra(stack);
 	}
 }
 
@@ -75,17 +75,17 @@ void	sort_ministack_4(t_stk_node **a, t_stk_node **b)
 	{
 		min_node = find_min(*a, false);
 		if (min_node == (*a)->next)
-			sa(a, 0);
+			sa(a);
 		else if (min_node == find_last(*a))
-			rra(a, 0);
+			rra(a);
 		else if (min_node == find_last(*a)->prev)
-			do_twice(rra, a, 0);
-		pb(b, a, 0);
+			do_twice(rra, a);
+		pb(b, a);
 	}
 	if ((*a)->value > (*a)->next->value)
-		sa(a, 0);
+		sa(a);
 	while (*b)
-		pa(a, b, 0);
+		pa(a, b);
 }
 
 void	sort_ministack_5(t_stk_node **a, t_stk_node **b)
@@ -99,18 +99,18 @@ void	sort_ministack_5(t_stk_node **a, t_stk_node **b)
 		else
 			node_to_push = find_min(*a, false);
 		if (node_to_push == (*a)->next)
-			sa(a, 0);
+			sa(a);
 		else if (node_to_push == find_last(*a)->prev)
-			do_twice(rra, a, 0);
+			do_twice(rra, a);
 		else if (node_to_push == (*a)->next->next)
-			do_twice(ra, a, 0);
+			do_twice(ra, a);
 		else if (node_to_push == find_last(*a))
-			rra(a, 0);
-		pb(b, a, 0);
+			rra(a);
+		pb(b, a);
 	}
 	sort_ministack_3(a);
 	if ((*b)->value < (*b)->next->value)
-		sb(b, 0);
+		sb(b);
 	while (*b)
-		pa(a, b, 0);
+		pa(a, b);
 }

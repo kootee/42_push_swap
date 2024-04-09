@@ -6,22 +6,11 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 15:10:45 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/04/08 15:44:39 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/04/09 10:32:58 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-void	final_sort_b_stack(t_stk_node **b)
-{
-	if (compare_cost(b, find_max(*b)->value, find_max(*b)->value) <= 0)
-	{
-		while (find_max(*b) != *b)
-			rb(b, 0);
-	}
-	while (find_max(*b) != *b)
-		rrb(b, 0);
-}
 
 static int	count_b_rot(t_stk_node **b, t_stk_node *temp, int a_cmd, int b_cmd)
 {
@@ -34,7 +23,7 @@ static int	count_b_rot(t_stk_node **b, t_stk_node *temp, int a_cmd, int b_cmd)
 		else
 		{
 			while (*b != temp)
-				rb(b, 0);
+				rb(b);
 		}
 	}
 	else if (b_cmd == RR)
@@ -44,10 +33,21 @@ static int	count_b_rot(t_stk_node **b, t_stk_node *temp, int a_cmd, int b_cmd)
 		else
 		{
 			while (*b != temp)
-				rrb(b, 0);
+				rrb(b);
 		}
 	}
 	return (0);
+}
+
+void	final_sort_b_stack(t_stk_node **b)
+{
+	if (compare_cost(b, find_max(*b)->value, find_max(*b)->value) <= 0)
+	{
+		while (find_max(*b) != *b)
+			rb(b);
+	}
+	while (find_max(*b) != *b)
+		rrb(b);
 }
 
 int	sort_b_stack(t_stk_node **b, int to_top, int a_cmd)
@@ -59,7 +59,7 @@ int	sort_b_stack(t_stk_node **b, int to_top, int a_cmd)
 	temp = *b;
 	if (stack_len(*b) < 2)
 		return (0);
-	if (to_top > find_max(*b)->value || to_top < find_min(*b, 0)->value)
+	if (to_top > find_max(*b)->value || to_top < find_min(*b, false)->value)
 		temp = find_max(*b);
 	else
 	{

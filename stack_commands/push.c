@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 12:14:48 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/04/04 14:57:58 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/04/09 10:31:07 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,14 @@ static void	push(t_stk_node **from_stack, t_stk_node **to_stack)
 	}
 }
 
-void	pa(t_stk_node **a, t_stk_node **b, int i)
+void	pa(t_stk_node **a, t_stk_node **b)
 {
 	push(b, a);
-	if (!i)
-		write(1, "pa\n", 3);
+	write(1, "pa\n", 3);
 }
 
-void	pb(t_stk_node **b, t_stk_node **a, int i)
+void	pb(t_stk_node **b, t_stk_node **a)
 {
 	push(a, b);
-	if (!i)
-		write(1, "pb\n", 3);
+	write(1, "pb\n", 3);
 }
