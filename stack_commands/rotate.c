@@ -6,13 +6,13 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 12:32:47 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/04/09 10:31:39 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/04/09 15:24:48 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	rotate(t_stk_node **stack)
+static void	rotate(t_stk_node **stack)
 {
 	t_stk_node	*last_node;
 	int			len;
