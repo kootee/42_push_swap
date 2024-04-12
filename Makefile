@@ -2,7 +2,7 @@ NAME = push_swap
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 SRCS = main.c \
 		push_swap_utilities/stack_utils.c \
